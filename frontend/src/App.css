@@ -35,3 +35,8 @@
     transform: rotate(360deg);
   }
 }
+
+.starAnimation {
+  --fa-animation-duration: 2s;
+  --fa-fade-opacity: 0.6;
+}
