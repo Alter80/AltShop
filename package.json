@@ -1,0 +1,23 @@
+{
+  "name": "altshop",
+  "version": "1.0.0",
+  "description": "MERN Ecom app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server" ,
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alter80/AltShop.git"
+  },
+  "author": "Fahim (Alter80)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alter80/AltShop/issues"
+  },
+  "homepage": "https://github.com/Alter80/AltShop#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
