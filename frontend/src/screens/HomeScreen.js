@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import products from "../products";
-import Product from "../components/Product";
+import Products from "../components/Products";
+import { Link } from "react-router-dom";
 
 const HomeScreen = () => {
   return (
@@ -10,7 +11,9 @@ const HomeScreen = () => {
       <Row>
         {products.map((product) => (
           <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-            <Product product={product} />
+            <Link to={`/product/${product._id}`}>
+              <Products product={product} />
+            </Link>
           </Col>
         ))}
       </Row>
