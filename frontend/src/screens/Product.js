@@ -17,7 +17,7 @@ const Product = () => {
     };
 
     fetchProducts();
-  }, []);
+  }, [productId]);
 
   return (
     <>
