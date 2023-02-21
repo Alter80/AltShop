@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/Alter80/AltShop#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^6.9.2"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",

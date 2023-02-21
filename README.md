@@ -11,6 +11,8 @@ This project is a MERN stack ecomerce website
 5. Concurrently
 6. React Bootstrap
 7. React Router Dom v6.8
+8. Mongoose
+9. Colors.js (showing colors and warnings in terminal)
 
 # Commands to run
 
