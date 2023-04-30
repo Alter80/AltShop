@@ -13,6 +13,7 @@ This project is a MERN stack ecomerce website
 7. React Router Dom v6.8
 8. Mongoose
 9. Colors.js (showing colors and warnings in terminal)
+10. Bcryptjs(for password encryption)
 
 # Commands to run
 
