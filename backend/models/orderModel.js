@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 const orderSchema = mongoose.Schema(
   {
@@ -34,7 +34,12 @@ const orderSchema = mongoose.Schema(
       id: { type: String },
       status: { type: String },
       update_time: { type: String },
-      email_addresss: { type: String },
+      email_address: { type: String },
+    },
+    itemsPrice: {
+      type: Number,
+      required: true,
+      default: 0.0,
     },
     taxPrice: {
       type: Number,
@@ -73,6 +78,6 @@ const orderSchema = mongoose.Schema(
   }
 );
 
-const Order = mongoose.model("User", orderSchema);
+const Order = mongoose.model("Order", orderSchema);
 
 export default Order;
