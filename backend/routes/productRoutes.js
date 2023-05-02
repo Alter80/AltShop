@@ -15,7 +15,7 @@ router.get(
   })
 );
 
-// @about    Fetch single Paroduct by id
+// @about   Fetch single Paroduct by id
 // @route   GET /api/products/:id
 // @access  Public
 router.get(
@@ -26,7 +26,8 @@ router.get(
     if (product) {
       res.json(product);
     } else {
-      res.status(404).json({ message: "Product Not Found" });
+      res.status(404);
+      throw new Error("Product Not Found");
     }
 
     res.json(product);
