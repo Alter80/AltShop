@@ -9,6 +9,8 @@ import NotFound from "./NotFound";
 import Product from "./screens/Product";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const router = createBrowserRouter([
   {
@@ -25,13 +27,13 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <Header />
     <div className="container">
       <RouterProvider router={router} />
     </div>
     <Footer />
-  </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
