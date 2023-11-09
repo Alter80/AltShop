@@ -29,8 +29,6 @@ router.get(
       res.status(404);
       throw new Error("Product Not Found");
     }
-
-    res.json(product);
   })
 );
 

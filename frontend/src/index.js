@@ -6,11 +6,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFound from "./NotFound";
-import Product from "./screens/Product";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Provider } from "react-redux";
 import store from "./store";
+import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/product/:productId",
-    element: <Product />,
+    element: <ProductScreen />,
+  },
+  {
+    path: "/cart/:productId?",
+    element: <CartScreen />,
   },
 ]);
 

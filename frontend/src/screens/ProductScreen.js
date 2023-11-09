@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  Button,
+  Card,
+  Col,
+  Form,
+  Image,
+  ListGroup,
+  Row,
+} from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const Product = () => {
+const ProductScreen = () => {
   const dispatch = useDispatch();
+  const history = useNavigate();
+  const [qty, setQty] = useState(0);
   const { productId } = useParams();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -18,6 +28,10 @@ const Product = () => {
   }, [dispatch]);
 
   const singleProduct = product;
+
+  const addToCartHandeler = () => {
+    history(`/cart/${productId}?qty=${qty}`);
+  };
 
   return (
     <>
@@ -52,6 +66,7 @@ const Product = () => {
               <ListGroup.Item>{singleProduct.description}</ListGroup.Item>
             </ListGroup>
           </Col>
+
           <Col md={3}>
             <Card>
               <ListGroup variant="flush">
@@ -75,12 +90,38 @@ const Product = () => {
                     </Col>
                   </Row>
                 </ListGroup.Item>
+
+                {product.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Qty</Col>
+                      <Col>
+                        <Form.Select
+                          as="select"
+                          value={qty}
+                          onChange={(e) => setQty(e.target.value)}
+                          className="px-4 py-1"
+                        >
+                          {[...Array(product.countInStock).keys()].map(
+                            (count) => (
+                              <option key={count + 1} value={count + 1}>
+                                {count + 1}
+                              </option>
+                            )
+                          )}
+                        </Form.Select>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                )}
+
                 <ListGroup.Item>
                   <div className="d-grid">
                     <Button
                       type="button"
                       variant="outline-dark"
                       disabled={singleProduct.countInStock === 0}
+                      onClick={addToCartHandeler}
                     >
                       Add to Cart
                     </Button>
@@ -95,4 +136,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductScreen;
