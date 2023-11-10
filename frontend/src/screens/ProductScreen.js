@@ -17,20 +17,20 @@ import Message from "../components/Message";
 
 const ProductScreen = () => {
   const dispatch = useDispatch();
-  const history = useNavigate();
-  const [qty, setQty] = useState(0);
+  const navigateTo = useNavigate();
+  const [qty, setQty] = useState(1);
   const { productId } = useParams();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(productId));
-  }, [dispatch]);
+  }, [dispatch, productId, navigateTo]);
 
   const singleProduct = product;
 
   const addToCartHandeler = () => {
-    history(`/cart/${productId}?qty=${qty}`);
+    navigateTo(`/cart/${productId}?qty=${qty}`);
   };
 
   return (
