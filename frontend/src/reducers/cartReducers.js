@@ -5,14 +5,9 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     case CART_ADD_ITEM:
       const item = action.payload;
 
-      console.log("STATE", state);
-
       const existItem = state.cartItems.find((x) => x.product === item.product);
 
-      console.log("exitst check", existItem);
-
       if (existItem) {
-        console.log("if exis 1");
         return {
           ...state,
           cartItems: state.cartItems.map((x) =>
@@ -20,7 +15,6 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
           ),
         };
       } else {
-        console.log("Not if exist 2");
         return {
           ...state,
           cartItems: [...state.cartItems, item],
