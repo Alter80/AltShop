@@ -1,11 +1,16 @@
 import React from "react";
-import { NavLink, useRouteError } from "react-router-dom";
+import { NavLink, useNavigate, useRouteError } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const NotFound = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const notFound = useRouteError();
+  const history = useNavigate();
   console.error(notFound);
+
+  const handleGoBack = () => {
+    history(-1);
+  };
 
   return (
     <div id="error-page" className="text-center mt-5 ">
@@ -14,11 +19,9 @@ const NotFound = () => {
       <p>
         <i>{notFound.statusText || notFound.message}</i>
       </p>
-      <NavLink to="/">
-        <Button variant="dark" className="rounded-start">
-          Go Back
-        </Button>
-      </NavLink>
+      <Button variant="dark" className="rounded-start" onClick={handleGoBack}>
+        Go Back
+      </Button>
     </div>
   );
 };
