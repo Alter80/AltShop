@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import {
   Link,
-  useLocation,
   useNavigate,
   useParams,
   useSearchParams,
@@ -12,13 +11,12 @@ import {
   Col,
   ListGroup,
   Image,
-  From,
   Button,
   Card,
   Form,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 const CartScreen = () => {
   const { productId } = useParams();
@@ -38,7 +36,7 @@ const CartScreen = () => {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandeler = (id) => {
-    console.log("REMOVE");
+    dispatch(removeFromCart(id));
   };
 
   const checkOutHandler = () => {
@@ -47,8 +45,8 @@ const CartScreen = () => {
 
   return (
     <Row>
+      <h1>Shopping Cart</h1>
       <Col md={8}>
-        <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to="/">Go Back</Link>{" "}
