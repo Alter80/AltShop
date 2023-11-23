@@ -1,6 +1,6 @@
 # Project Details
 
-This project is a MERN stack ecomerce website
+This project is a MERN stack e-commerce website
 
 # Things are used in this project
 
