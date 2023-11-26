@@ -15,6 +15,7 @@ This project is a MERN stack e-commerce website
 9. Colors.js (showing colors and warnings in terminal)
 10. Bcryptjs(for password encryption)
 11. express-async-handler (for handleing error with try-catch in every block in routes. It handles the exceptions inside async express routes)
+12. JWT(For Authorization)
 
 # Commands to run
 
