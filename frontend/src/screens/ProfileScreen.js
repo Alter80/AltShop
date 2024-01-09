@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import FromContainer from "../components/FromContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProfileScreen = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,12 +17,14 @@ const ProfileScreen = () => {
   const dispatch = useDispatch();
 
   const userDetails = useSelector((state) => state.userDetails);
-
   const { loading, error, user } = userDetails;
 
-  //   to make the route protected. its bringing user login
+  // To make the route protected. its bringing user login
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
 
   useEffect(() => {
     if (!userInfo) {
@@ -47,15 +46,17 @@ const ProfileScreen = () => {
       setMessage("Passwords Do not match");
     } else {
       //   dispatch update profile
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
     }
   };
 
   return (
-    <Row>
-      <Col md={3}>
+    <Row className="mx-auto flex justify-content-around p-5">
+      <Col md={4}>
         <h2>User Profile</h2>
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
+        {success && <Message variant="success">Profile Updated</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group>
@@ -103,7 +104,7 @@ const ProfileScreen = () => {
           </Button>
         </Form>
       </Col>
-      <Col md={9}>
+      <Col md={6}>
         <h2>My Orders</h2>
       </Col>
     </Row>
