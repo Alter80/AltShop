@@ -1,6 +1,10 @@
 import axios from "axios";
 
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstans";
+import {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  CART_SAVE_SHIPPING_ADDRESS,
+} from "../constants/cartConstans";
 
 // cart add data
 export const addToCart = (id, qty) => async (dispatch, getState) => {
@@ -28,6 +32,16 @@ export const removeFromCart = (id) => (dispatch, getState) => {
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+};
+
+// save shipping address
+export const saveShippingAddress = (data) => async (dispatch, getState) => {
+  dispatch({
+    type: CART_SAVE_SHIPPING_ADDRESS,
+    payload: data,
+  });
+
+  localStorage.setItem("shippingAddress", JSON.stringify(data));
 };
 
 // here is using redux thunk and axios to get the data from the server. aslo the getState is to save the data to the localstorage.

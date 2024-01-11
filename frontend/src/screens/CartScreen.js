@@ -40,7 +40,8 @@ const CartScreen = () => {
   };
 
   const checkOutHandler = () => {
-    navigateTo("/login?redirect=shipping", { replace: true });
+    // this will check the user is logged in or not. if logged in then it will take to shipping page.
+    navigateTo("/login?redirect=/shipping", { replace: true });
   };
 
   return (
