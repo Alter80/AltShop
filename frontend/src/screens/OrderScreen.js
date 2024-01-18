@@ -9,17 +9,16 @@ import { getOrderDetails } from "../actions/orderActions";
 
 const OrderScreen = () => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
-  const navigate = useNavigate();
-
   const { orderId } = useParams();
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
   useEffect(() => {
-    dispatch(getOrderDetails(orderId));
-  }, []);
+    if (!order || order._id !== orderId) {
+      dispatch(getOrderDetails(orderId));
+    }
+  }, [order, orderId]);
 
   return (
     <>
