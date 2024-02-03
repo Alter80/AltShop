@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listUsers } from "../actions/userActions";
+import { deleteUser, listUsers } from "../actions/userActions";
 
 const UserListScreen = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,9 @@ const UserListScreen = () => {
 
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
+
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -23,10 +26,12 @@ const UserListScreen = () => {
     } else {
       navigate("/login");
     }
-  }, [dispatch, navigate]);
+  }, [dispatch, navigate, successDelete]);
 
   const deleteHandeler = (userId) => {
-    console.log("Test", userId);
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteUser(userId));
+    }
   };
 
   return (
@@ -73,6 +78,7 @@ const UserListScreen = () => {
                     variant="danger"
                     className="btn-sm"
                     onClick={() => deleteHandeler(user._id)}
+                    disabled={user.isAdmin ? true : false}
                   >
                     <i className="fas fa-trash"></i>
                   </Button>
