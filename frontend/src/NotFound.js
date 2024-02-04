@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate, useRouteError } from "react-router-dom";
+import { useNavigate, useRouteError } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const NotFound = () => {
