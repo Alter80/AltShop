@@ -4,13 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { useNavigate, useLocation, Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getUserDetails } from "../actions/userActions";
 
 const UserEditScreen = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
   const { id: userId } = useParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,7 +29,7 @@ const UserEditScreen = () => {
       setEmail(user.email);
       setIsAdmin(user.isAdmin);
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, userId]);
 
   const submitHandler = (e) => {
     e.preventDefault();
