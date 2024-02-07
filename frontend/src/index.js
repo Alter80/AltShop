@@ -21,6 +21,7 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
+import ProductListScreen from "./screens/ProductListScreen";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/cart/:productId?",
     element: <CartScreen />,
+  },
+  {
+    path: "/admin/productList",
+    element: <ProductListScreen />,
   },
   {
     path: "/admin/userList",
@@ -79,7 +84,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <Header />
-    <div>
+    <div className="container">
       <RouterProvider router={router} />
     </div>
     <Footer />
