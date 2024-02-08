@@ -16,8 +16,6 @@ const UserEditScreen = () => {
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
-  console.log("isADMin", isAdmin);
-
   const dispatch = useDispatch();
 
   const userDetails = useSelector((state) => state.userDetails);
