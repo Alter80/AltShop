@@ -34,4 +34,12 @@ Without nodemon, In terminal, run `npm start`
 
 In terminal, run `npm start`
 
+### Data Seeder Command (optional if you delete something from DB and want to restore/reset everything)
+
+log out and Stop the server and then In terminal, run `npm run data:import`
+And then `npm run dev` to start the services
+again.
+
+- Warning: If you've order in it then it will be removed as well. Make sure to have a backup and try to restore that backup.
+
 ...More Updates are comming...
