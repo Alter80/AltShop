@@ -16,6 +16,7 @@ This project is a MERN stack e-commerce website
 10. Bcryptjs(for password encryption)
 11. express-async-handler (for handleing error with try-catch in every block in routes. It handles the exceptions inside async express routes)
 12. JWT(For Authorization)
+13. Multer(for uploading files)
 
 # Commands to run
 
