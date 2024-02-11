@@ -23,6 +23,7 @@ import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
+import OrderListScreen from "./screens/OrdersListScreen";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/cart/:productId?",
     element: <CartScreen />,
+  },
+  {
+    path: "/admin/orderList",
+    element: <OrderListScreen />,
   },
   {
     path: "/admin/productList",
