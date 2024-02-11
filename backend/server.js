@@ -28,7 +28,7 @@ app.use("/api/users", userRoutes);
 // order route
 app.use("/api/orders", orderRoutes);
 // upload route
-app.use("/api/orders", uploadRoutes);
+app.use("/api/upload", uploadRoutes);
 
 app.get("/api/config/paypal", (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
