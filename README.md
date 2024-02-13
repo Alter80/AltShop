@@ -17,6 +17,7 @@ This project is a MERN stack e-commerce website
 11. express-async-handler (for handleing error with try-catch in every block in routes. It handles the exceptions inside async express routes)
 12. JWT(For Authorization)
 13. Multer(for uploading files)
+14. Morgan(HTTP request logger middleware for node.js)
 
 # Commands to run
 
@@ -44,3 +45,7 @@ again.
 - Warning: If you've order in it then it will be removed as well. Make sure to have a backup and try to restore that backup.
 
 ...More Updates are comming...
+
+# Update Note 1:
+
+    Use [Wind Ui](https://wind-ui.com/components/) to improve the ui to make everything more dynamic.
