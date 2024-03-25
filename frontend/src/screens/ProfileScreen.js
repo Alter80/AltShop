@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { listUserOrder } from "../actions/orderActions";
+import { ORDER_DETAILS_RESET } from "../constants/orderConstants";
 
 const ProfileScreen = () => {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ const ProfileScreen = () => {
         setEmail(user.email);
       }
     }
+    dispatch({ type: ORDER_DETAILS_RESET });
   }, [dispatch, navigate, userInfo, user]);
 
   const submitHandler = (e) => {
