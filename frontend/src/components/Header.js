@@ -2,9 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { logout } from "../actions/userActions";
+import SearchBox from "./SearchBox";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin);
 
@@ -21,6 +24,7 @@ const Header = () => {
           <Navbar.Brand href="/">AltShop</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <SearchBox navigate={navigate} />
             <Nav className="ms-auto">
               <Nav.Link href="/cart">
                 <i className="fas fa-shopping-cart"></i> Cart

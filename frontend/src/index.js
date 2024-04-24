@@ -4,7 +4,7 @@ import "./bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import NotFound from "./NotFound";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -25,79 +25,93 @@ import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrdersListScreen";
 
+function Layout({ error }) {
+  return (
+    <>
+      <Header />
+      {error ? <NotFound /> : <Outlet />}
+      <Footer />
+    </>
+  );
+}
+
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
-    errorElement: <NotFound />,
-    //this NotFound page can not be under any folder.
-  },
-  {
-    path: "/product/:productId",
-    element: <ProductScreen />,
-  },
-  {
-    path: "/cart/:productId?",
-    element: <CartScreen />,
-  },
-  {
-    path: "/admin/orderList",
-    element: <OrderListScreen />,
-  },
-  {
-    path: "/admin/productList",
-    element: <ProductListScreen />,
-  },
-  {
-    path: "/admin/product/:id/edit",
-    element: <ProductEditScreen />,
-  },
-  {
-    path: "/admin/userList",
-    element: <UserListScreen />,
-  },
-  {
-    path: "/admin/user/:id/edit",
-    element: <UserEditScreen />,
-  },
-  {
-    path: "/login",
-    element: <LoginScreen />,
-  },
-  {
-    path: "/register",
-    element: <RegisterScreen />,
-  },
-  {
-    path: "/profile",
-    element: <ProfileScreen />,
-  },
-  {
-    path: "/shipping",
-    element: <ShippingScreen />,
-  },
-  {
-    path: "/payment",
-    element: <PaymentScreen />,
-  },
-  {
-    path: "/placeOrder",
-    element: <PlaceOrderScreen />,
-  },
-  {
-    path: "/order/:orderId",
-    element: <OrderScreen />,
+    element: <Layout />,
+    errorElement: <Layout error />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+      },
+      {
+        path: "/search/:keyword",
+        element: <App />,
+      },
+      {
+        path: "/product/:productId",
+        element: <ProductScreen />,
+      },
+      {
+        path: "/cart/:productId?",
+        element: <CartScreen />,
+      },
+      {
+        path: "/admin/orderList",
+        element: <OrderListScreen />,
+      },
+      {
+        path: "/admin/productList",
+        element: <ProductListScreen />,
+      },
+      {
+        path: "/admin/product/:id/edit",
+        element: <ProductEditScreen />,
+      },
+      {
+        path: "/admin/userList",
+        element: <UserListScreen />,
+      },
+      {
+        path: "/admin/user/:id/edit",
+        element: <UserEditScreen />,
+      },
+      {
+        path: "/login",
+        element: <LoginScreen />,
+      },
+      {
+        path: "/register",
+        element: <RegisterScreen />,
+      },
+      {
+        path: "/profile",
+        element: <ProfileScreen />,
+      },
+      {
+        path: "/shipping",
+        element: <ShippingScreen />,
+      },
+      {
+        path: "/payment",
+        element: <PaymentScreen />,
+      },
+      {
+        path: "/placeOrder",
+        element: <PlaceOrderScreen />,
+      },
+      {
+        path: "/order/:orderId",
+        element: <OrderScreen />,
+      },
+    ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <Header />
-    <div className="container">
-      <RouterProvider router={router} />
-    </div>
-    <Footer />
+    <RouterProvider router={router} />
   </Provider>
 );
 
