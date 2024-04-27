@@ -24,12 +24,19 @@ import UserEditScreen from "./screens/UserEditScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrdersListScreen";
+import { Container } from "react-bootstrap";
 
 function Layout({ error }) {
   return (
     <>
       <Header />
-      {error ? <NotFound /> : <Outlet />}
+      {error ? (
+        <NotFound />
+      ) : (
+        <Container>
+          <Outlet />
+        </Container>
+      )}
       <Footer />
     </>
   );

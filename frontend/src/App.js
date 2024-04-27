@@ -7,9 +7,7 @@ function App() {
     <div className="App">
       {/* <Header /> */}
       <main className="py-3">
-        <Container>
-          <HomeScreen />
-        </Container>
+        <HomeScreen />
       </main>
       {/* <Footer /> */}
     </div>
